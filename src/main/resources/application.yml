@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: "customhikaridatasource"
+
+
+custom:
+  application:
+    hikari:
+      datasource:
+        pool-name: HikariPool
+        jdbc-url: jdbc:sqlserver://localhost:1433;databaseName=TestDB;integratedSecurity=true;applicationName=customhikaridatasource;
+        maximum-pool-size: 10
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+database:
+  username: admin
+  password: admin

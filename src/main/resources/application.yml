@@ -1,17 +1,30 @@
 spring:
   application:
-    name: "customhikaridatasource"
+    name: hikari-datasource
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      data-locations: classpath:sql/CreateSchema.sql, classpath:sql/InsertSchema.sql
+  h2:
+    console:
+      enabled: true
+      path: "/h2-console"
+      settings.trace: true
+      settings.web-allow-others: false
+server:
+  servlet:
+    context-path: "/customhikaridatasource"
+  port: 8080
+
+h2.database:
+  jdbcUrl: jdbc:h2:mem:DepartmentDB
+  driverClassName: org.h2.Driver
+  username: sa
+  password: password
+  maxPoolSize: 20
 
 
-custom:
-  application:
-    hikari:
-      datasource:
-        pool-name: HikariPool
-        jdbc-url: jdbc:sqlserver://localhost:1433;databaseName=TestDB;integratedSecurity=true;applicationName=customhikaridatasource;
-        maximum-pool-size: 10
-        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-
-database:
-  username: admin
-  password: admin
